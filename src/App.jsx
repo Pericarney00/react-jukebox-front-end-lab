@@ -93,8 +93,8 @@ const App = () => {
         handleSelect={handleSelect}
         handleFormView={handleFormView}
         isFormOpen={isFormOpen}
-        
-        
+        handleDeleteTrack={handleDeleteTrack}
+        handleUpdateTrack={handleUpdateTrack}
       />
       {isFormOpen ? (
         <TrackForm
@@ -107,7 +107,6 @@ const App = () => {
           tracks={tracks}
           selected={selected}
           handleFormView={handleFormView}
-          handleDeleteTrack={handleDeleteTrack}
         />
       )}
     </>

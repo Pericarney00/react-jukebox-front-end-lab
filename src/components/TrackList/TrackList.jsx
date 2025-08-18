@@ -1,8 +1,10 @@
 import NowPlaying from "../NowPlaying/NowPlaying";
 
 const TrackList = (props) => {
-  console.log(props)
-  console.log(props.tracks)
+  console.log(`TrackList Props:`,props)
+  console.log(`Tracks Props:`, props.tracks)
+    console.log(`TrackId Props:`, props.selected);
+
   return (
     <div>
       <h1>Track List</h1>
@@ -15,10 +17,19 @@ const TrackList = (props) => {
               <li
                 key={track._id}
                 style={{ cursor: "pointer", color: "#646CFF" }}
-                onClick={() => props.handleSelect(track)}
               >
                 {track.title} by {track.artist}
-               
+                <div>
+                  <button onClick={() => props.handleSelect(track)}>
+                    Play
+                  </button>
+                  <button onClick={() => props.handleFormView(track)}>
+                    Edit Track
+                  </button>
+                  <button onClick={() => props.handleDeleteTrack(track._id)}>
+                    Delete Track
+                  </button>
+                </div>
               </li>
             ))}
           </ul>
