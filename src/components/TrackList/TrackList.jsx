@@ -1,3 +1,4 @@
+import NowPlaying from "../NowPlaying/NowPlaying";
 
 const TrackList = (props) => {
   console.log(props)
@@ -5,18 +6,19 @@ const TrackList = (props) => {
   return (
     <div>
       <h1>Track List</h1>
-      <div>
+      <div className="card">
         {!props.tracks.length ? (
           <h2>No Tracks Yet!</h2>
         ) : (
-          <ul>
+          <ul className="card">
             {props.tracks.map((track) => (
               <li
                 key={track._id}
                 style={{ cursor: "pointer", color: "#646CFF" }}
                 onClick={() => props.handleSelect(track)}
               >
-                {track.title}
+                {track.title} by {track.artist}
+               
               </li>
             ))}
           </ul>

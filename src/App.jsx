@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import * as trackService from "./services/trackService.js";
 import TrackList from "./components/TrackList/TrackList.jsx";
-import NowPlaying from "./components/NowPlaying/NowPlaying.jsx";
 import TrackForm from "./components/TrackForm/TrackForm.jsx"
+import NowPlaying from "./components/NowPlaying/NowPlaying.jsx"
 
 const App = () => {
   const [tracks, setTracks] = useState([]);
@@ -14,7 +14,7 @@ const App = () => {
     setSelected(track);
     setIsFormOpen(false)
   };
-  
+
   const handleFormView = (track) => {
     if (!track._id) setSelected(null);
     setIsFormOpen(!isFormOpen)
@@ -69,7 +69,7 @@ const App = () => {
     }
   };
 
-
+  
   useEffect( () => {
     const fetchTracks = async () => {
       try {
@@ -93,11 +93,22 @@ const App = () => {
         handleSelect={handleSelect}
         handleFormView={handleFormView}
         isFormOpen={isFormOpen}
+        
+        
       />
       {isFormOpen ? (
-        <TrackForm handleAddTrack={handleAddTrack} selected={selected} handleUpdateTrack={handleUpdateTrack} />
+        <TrackForm
+          handleAddTrack={handleAddTrack}
+          selected={selected}
+          handleUpdateTrack={handleUpdateTrack}
+        />
       ) : (
-          <NowPlaying selected={selected} handleFormView={handleFormView} handleDeleteTrack={handleDeleteTrack} />
+        <NowPlaying
+          tracks={tracks}
+          selected={selected}
+          handleFormView={handleFormView}
+          handleDeleteTrack={handleDeleteTrack}
+        />
       )}
     </>
   );
